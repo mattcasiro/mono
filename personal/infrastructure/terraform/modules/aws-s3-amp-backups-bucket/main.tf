@@ -3,7 +3,7 @@ data "aws_region" "current" {}
 
 locals {
   account_regional_name = format("%s-%s-%s-an", var.name, data.aws_caller_identity.current.account_id, data.aws_region.current.region)
-  bucket_name = var.namespace == "account-regional" ? local.account_regional_name : var.name
+  bucket_name           = var.namespace == "account-regional" ? local.account_regional_name : var.name
 }
 
 resource "aws_s3_bucket" "this" {
